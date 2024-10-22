@@ -9,9 +9,32 @@ def clients_operations():
     last_5 = last_5_executed(DATA_JSON)
 
     last_5.sort(reverse=True, key=lambda x: x['date'])
-    for date in last_5:
-        pruning = date["date"][:-16]
-        point = pruning.replace("-", ".")
-        print(point)
+    for information in last_5:
+
+        # Дата выполненных операций
+        date = information["date"][8:-16]
+        month = information["date"][5:-19]
+        year = information["date"][:-22]
+        print(f"{date}.{month}.{year} Перевод организации")
+
+        # Данные карты от кого идет перевод
+        card_from = str(information["from"])
+        parts = card_from.split(" ")
+        print(parts)
+        # if parts[-1].isdigit():
+        #     card_name_from = " ".join(parts[:-1])
+        #     card_number_from = parts[-1]
+        #     print(card_number_from)
+        #     print(f"{card_name_from} {card_number_from[:4]} {card_number_from[4:6]}** **** {card_number_from[12:16]}")
+
+
+        # Данные карты кому идет перевод
+        # card_to = str(information["to"])
+        # parts = card_to.split(" ")
+        # if parts[-1].isdigit():
+        #     card_name_to = " ".join(parts[:-1])
+        #     card_number_to = parts[-1]
+        #     print(f" -> {card_name_to} **** **** ****{card_number_to}")
+        #     print()
 
 clients_operations()
