@@ -10,5 +10,5 @@ def date_editor(path):
         date = information["date"][8:-16]
         month = information["date"][5:-19]
         year = information["date"][:-22]
-        list_date.append([date, month, year + " " + "Перевод организации"])
+        list_date.append(f"{date}.{month}.{year} Перевод организации")
     return list_date
